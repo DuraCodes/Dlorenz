@@ -62,6 +62,7 @@ import { ImageKitMediaTab } from './cms/ImageKitMediaTab';
 import { InquiriesTab } from './cms/InquiriesTab';
 import { ActivityLogsTab } from './cms/ActivityLogsTab';
 import { AdminLoginModal } from './cms/AdminLoginModal';
+import { getStoredImageKitConfig, uploadToImageKit } from '../lib/imagekit';
 import {
   AdminUser,
   apiGetMe,
@@ -121,15 +122,27 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({ onExit }) => {
         setIsCheckingAuth(false);
       }
 
-      // 2. Check ImageKit status
-      try {
-        const res = await fetch('/api/imagekit/status');
-        if (res.ok) {
-          const data = await res.json();
-          setImageKitStatus(data);
+      // 2. Check ImageKit status (local stored config + optional server config)
+      const storedIk = getStoredImageKitConfig();
+      if (storedIk && storedIk.publicKey && storedIk.privateKey) {
+        setImageKitStatus({
+          configured: true,
+          urlEndpoint: storedIk.urlEndpoint,
+          publicKey: storedIk.publicKey,
+        });
+      } else {
+        try {
+          const res = await fetch('/api/imagekit/status');
+          const contentType = res.headers.get('content-type');
+          if (res.ok && contentType && contentType.includes('application/json')) {
+            const data = await res.json();
+            setImageKitStatus(data);
+          } else {
+            setImageKitStatus({ configured: false, urlEndpoint: null, publicKey: null });
+          }
+        } catch (e) {
+          setImageKitStatus({ configured: false, urlEndpoint: null, publicKey: null });
         }
-      } catch (e) {
-        setImageKitStatus({ configured: false, urlEndpoint: null, publicKey: null });
       }
 
       // 3. Fetch Full Database Records
@@ -412,14 +425,9 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({ onExit }) => {
       reader.onload = async (event) => {
         const dataUrl = event.target?.result as string;
 
-        // Try getting ImageKit keys from saved config
-        let savedKeys: any = null;
-        try {
-          const raw = localStorage.getItem('dlorenz_imagekit_config');
-          if (raw) savedKeys = JSON.parse(raw);
-        } catch (e) {}
+        const storedConfig = getStoredImageKitConfig();
 
-        if (imageKitStatus?.configured || savedKeys?.publicKey) {
+        if (storedConfig && storedConfig.privateKey) {
           setIsUploadingImage(true);
           setUploadProgressText(`Uploading ${type} asset to ImageKit CDN...`);
           try {
@@ -429,30 +437,15 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({ onExit }) => {
             else if (type === 'logo') folder = '/dlorenz/brand';
             else if (type === 'about') folder = '/dlorenz/brand';
 
-            const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-            if (savedKeys?.publicKey) headers['x-imagekit-public-key'] = savedKeys.publicKey;
-            if (savedKeys?.privateKey) headers['x-imagekit-private-key'] = savedKeys.privateKey;
-            if (savedKeys?.urlEndpoint) headers['x-imagekit-url-endpoint'] = savedKeys.urlEndpoint;
+            const cleanFileName = `${type}_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+            const res = await uploadToImageKit(dataUrl, cleanFileName, folder, storedConfig);
 
-            const res = await fetch('/api/imagekit/upload', {
-              method: 'POST',
-              headers,
-              body: JSON.stringify({
-                file: dataUrl,
-                fileName: `${type}_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`,
-                folder,
-              }),
-            });
-
-            if (res.ok) {
-              const data = await res.json();
-              if (data.url) {
-                setUploadProgressText(`Uploaded successfully to ImageKit CDN!`);
-                setTimeout(() => setUploadProgressText(null), 3000);
-                setIsUploadingImage(false);
-                resolve(data.url);
-                return;
-              }
+            if (res.success && res.url) {
+              setUploadProgressText(`Uploaded successfully to ImageKit CDN!`);
+              setTimeout(() => setUploadProgressText(null), 3000);
+              setIsUploadingImage(false);
+              resolve(res.url);
+              return;
             }
           } catch (err) {
             console.error('ImageKit upload failed, falling back to data URL', err);

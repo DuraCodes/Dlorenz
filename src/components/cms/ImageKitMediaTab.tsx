@@ -22,7 +22,15 @@ import {
   Trash2,
 } from 'lucide-react';
 import { SiteConfig } from '../../types';
-import { apiDeleteImageKitFile } from '../../lib/api';
+import {
+  testImageKitConnection,
+  saveStoredImageKitConfig,
+  getStoredImageKitConfig,
+  uploadToImageKit,
+  listImageKitFiles,
+  deleteImageKitFile,
+  ImageKitConfig,
+} from '../../lib/imagekit';
 
 interface ImageKitMediaTabProps {
   imageKitStatus: {
@@ -62,32 +70,30 @@ export const ImageKitMediaTab: React.FC<ImageKitMediaTabProps> = ({
   const [files, setFiles] = useState<any[]>([]);
   const [isLoadingFiles, setIsLoadingFiles] = useState(false);
 
-  // Load saved credentials from localStorage on mount
+  // Load saved credentials on mount
   useEffect(() => {
-    try {
-      const savedConfig = localStorage.getItem('dlorenz_imagekit_config');
-      if (savedConfig) {
-        const parsed = JSON.parse(savedConfig);
-        if (parsed.publicKey) setPublicKey(parsed.publicKey);
-        if (parsed.privateKey) setPrivateKey(parsed.privateKey);
-        if (parsed.urlEndpoint) setUrlEndpoint(parsed.urlEndpoint);
-      }
-    } catch (e) {
-      console.error(e);
+    const stored = getStoredImageKitConfig();
+    if (stored) {
+      if (stored.publicKey) setPublicKey(stored.publicKey);
+      if (stored.privateKey) setPrivateKey(stored.privateKey);
+      if (stored.urlEndpoint) setUrlEndpoint(stored.urlEndpoint);
     }
   }, []);
 
   // Fetch files from ImageKit
   const fetchImageKitFiles = async () => {
-    if (!imageKitStatus?.configured) return;
+    const config = {
+      publicKey: publicKey.trim(),
+      privateKey: privateKey.trim(),
+      urlEndpoint: urlEndpoint.trim(),
+    };
+    if (!config.privateKey) return;
+
     setIsLoadingFiles(true);
     try {
-      const res = await fetch(`/api/imagekit/files?path=${encodeURIComponent(uploadFolder)}`);
-      if (res.ok) {
-        const data = await res.json();
-        if (data.files && Array.isArray(data.files)) {
-          setFiles(data.files);
-        }
+      const res = await listImageKitFiles(uploadFolder, config);
+      if (res.success && res.files) {
+        setFiles(res.files);
       }
     } catch (err) {
       console.error('Failed to fetch ImageKit files:', err);
@@ -97,10 +103,10 @@ export const ImageKitMediaTab: React.FC<ImageKitMediaTabProps> = ({
   };
 
   useEffect(() => {
-    if (imageKitStatus?.configured) {
+    if (privateKey.trim() || imageKitStatus?.configured) {
       fetchImageKitFiles();
     }
-  }, [imageKitStatus?.configured, uploadFolder]);
+  }, [imageKitStatus?.configured, uploadFolder, privateKey]);
 
   // Delete ImageKit file
   const handleDeleteFile = async (fileId: string, fileName: string) => {
@@ -108,7 +114,11 @@ export const ImageKitMediaTab: React.FC<ImageKitMediaTabProps> = ({
     if (!window.confirm(`Are you sure you want to delete "${fileName}" from ImageKit cloud?`)) return;
 
     try {
-      const res = await apiDeleteImageKitFile(fileId);
+      const res = await deleteImageKitFile(fileId, {
+        publicKey: publicKey.trim(),
+        privateKey: privateKey.trim(),
+        urlEndpoint: urlEndpoint.trim(),
+      });
       if (res.success) {
         setFiles((prev) => prev.filter((f) => f.fileId !== fileId));
       } else {
@@ -131,37 +141,35 @@ export const ImageKitMediaTab: React.FC<ImageKitMediaTabProps> = ({
     setErrorMessage(null);
     setSaveSuccess(null);
 
+    const config: ImageKitConfig = {
+      publicKey: publicKey.trim(),
+      privateKey: privateKey.trim(),
+      urlEndpoint: urlEndpoint.trim().replace(/\/$/, ''),
+    };
+
     try {
-      const res = await fetch('/api/imagekit/configure', {
+      // 1. Direct validation test with ImageKit REST API
+      const testRes = await testImageKitConnection(config);
+      if (!testRes.success) {
+        setErrorMessage(testRes.error || 'Invalid credentials. Please verify your ImageKit keys.');
+        setIsSaving(false);
+        return;
+      }
+
+      // 2. Save to client storage
+      saveStoredImageKitConfig(config);
+      setSaveSuccess('ImageKit connected, validated, and saved successfully!');
+      onStatusUpdated();
+      fetchImageKitFiles();
+
+      // 3. Optional background sync to Express backend (if running in fullstack)
+      fetch('/api/imagekit/configure', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          publicKey: publicKey.trim(),
-          privateKey: privateKey.trim(),
-          urlEndpoint: urlEndpoint.trim(),
-        }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        setSaveSuccess('ImageKit connected and validated successfully!');
-        // Save to localStorage for client recall
-        localStorage.setItem(
-          'dlorenz_imagekit_config',
-          JSON.stringify({
-            publicKey: publicKey.trim(),
-            privateKey: privateKey.trim(),
-            urlEndpoint: urlEndpoint.trim(),
-          })
-        );
-        onStatusUpdated();
-        fetchImageKitFiles();
-      } else {
-        setErrorMessage(data.error || 'Failed to validate ImageKit credentials.');
-      }
+        body: JSON.stringify(config),
+      }).catch(() => {});
     } catch (err: any) {
-      setErrorMessage(err?.message || 'Network error configuring ImageKit.');
+      setErrorMessage(err?.message || 'Error configuring ImageKit.');
     } finally {
       setIsSaving(false);
     }
@@ -173,23 +181,21 @@ export const ImageKitMediaTab: React.FC<ImageKitMediaTabProps> = ({
     setErrorMessage(null);
     setSaveSuccess(null);
 
-    try {
-      const res = await fetch('/api/imagekit/test-connection', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          publicKey: publicKey.trim() || undefined,
-          privateKey: privateKey.trim() || undefined,
-          urlEndpoint: urlEndpoint.trim() || undefined,
-        }),
-      });
+    const config: ImageKitConfig = {
+      publicKey: publicKey.trim(),
+      privateKey: privateKey.trim(),
+      urlEndpoint: urlEndpoint.trim().replace(/\/$/, ''),
+    };
 
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setSaveSuccess(data.message || 'Connection verified! ImageKit API responding.');
+    try {
+      const res = await testImageKitConnection(config);
+      if (res.success) {
+        setSaveSuccess(res.message || 'Connection verified! ImageKit CDN & REST API responding.');
+        saveStoredImageKitConfig(config);
         onStatusUpdated();
+        fetchImageKitFiles();
       } else {
-        setErrorMessage(data.error || 'Connection test failed. Check your keys.');
+        setErrorMessage(res.error || 'Connection test failed. Please check your Private Key and URL Endpoint.');
       }
     } catch (err: any) {
       setErrorMessage(err?.message || 'Connection test failed.');
@@ -207,31 +213,26 @@ export const ImageKitMediaTab: React.FC<ImageKitMediaTabProps> = ({
     setUploadSuccessUrl(null);
     setErrorMessage(null);
 
+    const config: ImageKitConfig = {
+      publicKey: publicKey.trim(),
+      privateKey: privateKey.trim(),
+      urlEndpoint: urlEndpoint.trim().replace(/\/$/, ''),
+    };
+
     const reader = new FileReader();
     reader.onload = async (event) => {
       const dataUrl = event.target?.result as string;
 
       try {
-        const res = await fetch('/api/imagekit/upload', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            file: dataUrl,
-            fileName: `dlorenz_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`,
-            folder: uploadFolder,
-            publicKey: publicKey.trim() || undefined,
-            privateKey: privateKey.trim() || undefined,
-            urlEndpoint: urlEndpoint.trim() || undefined,
-          }),
-        });
+        const cleanName = `dlorenz_${Date.now()}_${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+        const res = await uploadToImageKit(dataUrl, cleanName, uploadFolder, config);
 
-        const data = await res.json();
-        if (res.ok && data.url) {
-          setUploadSuccessUrl(data.url);
-          setSaveSuccess(`Uploaded "${file.name}" to ImageKit successfully!`);
+        if (res.success && res.url) {
+          setUploadSuccessUrl(res.url);
+          setSaveSuccess(`Uploaded "${file.name}" to ImageKit CDN successfully!`);
           fetchImageKitFiles();
         } else {
-          setErrorMessage(data.error || 'Upload to ImageKit failed.');
+          setErrorMessage(res.error || 'Upload to ImageKit failed.');
         }
       } catch (err: any) {
         setErrorMessage(err?.message || 'Error during ImageKit upload.');
