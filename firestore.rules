@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated();
+    }
+
+    // Site Configuration: readable by anyone, writable by admin
+    match /site_config/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Bento Gallery: readable by anyone, writable by admin
+    match /bento_gallery/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Team Members: readable by anyone, writable by admin
+    match /team_members/{memberId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Partner Logos: readable by anyone, writable by admin
+    match /partner_logos/{partnerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Inquiries: public can submit (create with validation), admin can read/update/delete
+    match /inquiries/{inquiryId} {
+      allow create: if request.resource.data.name is string 
+                    && request.resource.data.name.size() > 0
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() > 0
+                    && request.resource.data.message is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Activity Logs: read/write by admin
+    match /activity_logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

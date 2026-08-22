@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-condensed: 'Barlow Condensed', 'Antonio', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-serif: 'DM Serif Display', 'Cinzel', 'Playfair Display', Georgia, serif;
+    --color-primary-accent: #4EFE32;
+    --color-secondary-accent: #00C2CB;
+    --color-dark-bg: #111216;
+    --color-dark-surface: #1A1C22;
+    --color-light-canvas: #ECECEC;
+    --color-primary-text: #FFFFFF;
+    --color-secondary-text: #A0A6B2;
+    --color-dark-text: #121212;
+  }
+
+  html,
+  body,
+  button,
+  input,
+  select,
+  textarea,
+  p,
+  span,
+  a,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-condensed);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Prevent iOS WebKit input focus zoom by ensuring 16px base font on mobile */
+  @media (max-width: 639px) {
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: #111216;
+    color: #FFFFFF;
+    letter-spacing: 0.015em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: clip;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/* Light Theme Overrides */
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #F3F4F6 !important;
+  color: #111216 !important;
+}
+
+html.light .bg-\[\#111216\],
+html.light .bg-\[\#121212\] {
+  background-color: #F3F4F6 !important;
+}
+
+html.light .bg-\[\#16181D\] {
+  background-color: #E5E7EB !important;
+}
+
+html.light .bg-\[\#1A1C22\] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#111216\]\/80,
+html.light .bg-\[\#111216\]\/90,
+html.light .bg-\[\#1A1C22\]\/80,
+html.light .bg-\[\#1A1C22\]\/90 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html.light .border-\[\#262933\],
+html.light .border-\[\#262933\]\/60 {
+  border-color: #D1D5DB !important;
+}
+
+html.light .text-\[\#FFFFFF\],
+html.light .text-white {
+  color: #111216 !important;
+}
+
+html.light .text-\[\#ECECEC\] {
+  color: #1F2937 !important;
+}
+
+html.light .text-\[\#A0A6B2\] {
+  color: #4B5563 !important;
+}
+
+html.light .text-\[\#D1D5DB\] {
+  color: #374151 !important;
+}
+
+/* Keep accent badge colors high-contrast in light mode */
+html.light .bg-\[\#4EFE32\] {
+  background-color: #2ecb15 !important;
+}
+
+html.light .text-\[\#4EFE32\] {
+  color: #16a34a !important;
+}
+
+html.light .text-\[\#00C2CB\] {
+  color: #0891b2 !important;
+}
+
+.font-condensed {
+  font-family: 'Barlow Condensed', 'Antonio', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.font-editorial-serif {
+  font-family: 'DM Serif Display', 'Cinzel', 'Playfair Display', Georgia, serif !important;
+}
+
+.tracking-condensed {
+  letter-spacing: 0.03em;
+}
+
+.tracking-condensed-wide {
+  letter-spacing: 0.12em;
+}
+
+.bg-dark-bg {
+  background-color: #111216;
+}
+
+.bg-dark-surface {
+  background-color: #1A1C22;
+}
+
+.bg-primary-accent {
+  background-color: #4EFE32;
+}
+
+.bg-secondary-accent {
+  background-color: #00C2CB;
+}
+
+.text-primary-accent {
+  color: #4EFE32;
+}
+
+.text-secondary-accent {
+  color: #00C2CB;
+}
+
+.text-secondary-muted {
+  color: #A0A6B2;
+}
+
+.text-dark-text {
+  color: #121212;
+}
+
+.border-dark-border {
+  border-color: #262933;
+}
+
+

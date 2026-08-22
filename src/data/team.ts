@@ -1,0 +1,47 @@
+import { TeamMember } from '../types';
+export type { TeamMember };
+
+export const dlorenzExecutiveTeam: TeamMember[] = [
+  {
+    id: 'daniel-oyetunde',
+    name: 'DANIEL OYETUNDE',
+    role: 'Chief Executive Officer',
+    shortRole: 'CEO',
+    division: 'Brand Operations & Market Execution',
+    badge: 'Founder & Managing Director',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    bio: 'Designing immersive, high-converting marketing campaigns and experiential activations that grab target audiences, earn instant trust, and drive immediate sales.',
+    expertise: ['Explosive Brand Ascension', 'Experiential Activations', 'Campaign Architecture', 'Revenue Scaling'],
+    status: 'Growth Advisory',
+    credentials: ['Strategic Advisory', 'Campaign Architecture'],
+    directAdvisoryScope: 'National Enterprise Brands & Real Estate Assets',
+  },
+  {
+    id: 'opeyemi-daniel',
+    name: 'OPEYEMI DANIEL',
+    role: 'Chief Operating Officer',
+    shortRole: 'COO',
+    division: 'Zero-Risk Real Estate Advisory',
+    badge: 'Executive Partner',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+    bio: 'Eliminating property acquisition anxiety across Nigeria with 100% verified, clean-titled, legally backed assets and guaranteed appreciation.',
+    expertise: ['Zero-Risk Real Estate', 'Clean-Titled Land Acquisition', 'Asset Appreciation', 'Wealth Preservation'],
+    status: 'Property Advisory',
+    credentials: ['Title Verification', 'Legal Due Diligence'],
+    directAdvisoryScope: 'Commercial & Residential Real Estate Assets',
+  },
+  {
+    id: 'joy-chiamaka',
+    name: 'JOY CHIAMAKA',
+    role: 'Head of Operations',
+    shortRole: 'OPERATION HEAD',
+    division: 'Field Activation & Retail Sampling',
+    badge: 'Operations Director',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    bio: 'Deploying high-energy field campaigns directly where customers shop and live, delivering transparent ROI, product trial, and direct sales conversions.',
+    expertise: ['Flawless Field Execution', 'Product Sampling', 'Retail Penetration', 'Performance Tracking'],
+    status: 'Operations Lead',
+    credentials: ['Field Management', 'Retail Network Operations'],
+    directAdvisoryScope: 'FMCG Sampling & Supermarket In-Store Activation',
+  },
+];

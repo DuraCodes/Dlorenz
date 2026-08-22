@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DLORENZ SOLUTIONS | Building Dreams, Selling Success</title>
+    <meta name="description" content="DLORENZ SOLUTIONS leverages expertise, diversity, and deep market insight to accelerate the growth of leading brands through innovative, results-driven solutions." />
+    <meta property="og:title" content="DLORENZ SOLUTIONS | Company Profile" />
+    <meta property="og:description" content="Building Dreams. Delivering Success. Innovative solutions for global brands." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function() {
+        var isExtensionError = function(msg, url) {
+          if (!msg) return false;
+          var str = String(msg).toLowerCase();
+          var urlStr = String(url || '').toLowerCase();
+          return (
+            str.indexOf('metamask') !== -1 ||
+            str.indexOf('originalprompt') !== -1 ||
+            urlStr.indexOf('extension') !== -1 ||
+            urlStr.indexOf('chrome-extension') !== -1 ||
+            urlStr.indexOf('moz-extension') !== -1
+          );
+        };
+        window.onerror = function(msg, url, lineNo, columnNo, error) {
+          if (isExtensionError(msg, url) || (error && isExtensionError(error.message, ''))) {
+            return true; // suppresses the error
+          }
+          return false;
+        };
+        window.addEventListener('error', function(event) {
+          if (isExtensionError(event.message, event.filename) || (event.error && isExtensionError(event.error.message, ''))) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+        window.addEventListener('unhandledrejection', function(event) {
+          var reason = event.reason ? (event.reason.message || String(event.reason)) : '';
+          if (isExtensionError(reason, '')) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Cinzel:wght@400;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

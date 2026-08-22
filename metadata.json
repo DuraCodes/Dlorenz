@@ -1,0 +1,6 @@
+{
+  "name": "DLORENZ Solutions",
+  "description": "DLORENZ Solutions enterprise web platform featuring interactive bento gallery, CMS management studio, responsive marketing layout, and executive showcases.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

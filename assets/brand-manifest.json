@@ -1,0 +1,12 @@
+{
+  "brandName": "DLORENZ SOLUTIONS",
+  "tagline": "BUILDING DREAMS, SELLING SUCCESS",
+  "category": "COMPANY PROFILE",
+  "primaryStatement": "Building Dreams. Delivering Success.",
+  "missionDescription": "We leverage our expertise, diversity, and deep market insight to accelerate the growth of leading brands through innovative, results-driven solutions.",
+  "assets": {
+    "video": "/assets/dlorenz-hero-video.mp4",
+    "poster": "/assets/dlorenz-hero-poster.jpg",
+    "logo": "/assets/dlorenz-logo.svg"
+  }
+}

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+    <meta name="cmsmagazine" content="17ded5a9362aae72cf758d760240d50b">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://livespot360.com/wp-content/themes/livespot/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://livespot360.com/wp-content/themes/livespot/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://livespot360.com/wp-content/themes/livespot/favicon-16x16.png">
+    <link rel="shortcut icon" href="https://livespot360.com/wp-content/themes/livespot/favicon.ico" type="image/x-icon" />
+    
+    <link rel="manifest" href="https://livespot360.com/wp-content/themes/livespot/site.webmanifest">
+    <link rel="mask-icon" href="https://livespot360.com/wp-content/themes/livespot/safari-pinned-tab.svg" color="#5bbad5">
+
+    <meta property="twitter:image" content="https://livespot360.com/wp-content/themes/livespot/cover.png">
+    <meta property="og:image" content="https://livespot360.com/wp-content/themes/livespot/cover.png">
+    
+            <link rel="canonical" href="https://livespot360.com/index.php">
+        <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <meta name='robots' content='noindex, follow' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.8 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>Page not found - Livespot360</title>
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:title" content="Page not found - Livespot360" />
+	<meta property="og:site_name" content="Livespot360" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebSite","@id":"https:\/\/livespot360.com\/#website","url":"https:\/\/livespot360.com\/","name":"Livespot","description":"Experience The Magic of Innovation","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/livespot360.com\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="safe-svg-svg-icon-style-inline-css">
+.safe-svg-cover{text-align:center}.safe-svg-cover .safe-svg-inside{display:inline-block;max-width:100%}.safe-svg-cover svg{fill:currentColor;height:100%;max-height:100%;max-width:100%;width:100%}
+
+/*# sourceURL=https://livespot360.com/wp-content/plugins/safe-svg/dist/safe-svg-block-frontend.css */
+</style>
+<link rel='stylesheet' id='theme-styles-css' href='https://livespot360.com/assets/css/main.css?ver=7.0.1' media='all' />
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script id="google_gtagjs-js" src="https://www.googletagmanager.com/gtag/js?id=GT-T9H436D" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["livespot360.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-T9H436D");
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit" } ); }; 
+//# sourceURL=google_gtagjs-js-after
+</script>
+<link rel="https://api.w.org/" href="https://livespot360.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://livespot360.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0.1" />
+<meta name="generator" content="Site Kit by Google 1.181.0" />        <script>
+            window.backDates = JSON.parse('{"ajax":[],"messages":[],"validateMess":[],"captchaKey":null}');
+        </script>
+<meta name="generator" content="Elementor 4.1.3; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<script>(function () {
+  const REEL_SELECTOR = '.ls-entryreel';
+  const CONTROLS_SELECTOR = '.ls-entryreel-controls';
+
+  function getControls(reel, index) {
+    let controls = reel.nextElementSibling;
+
+    if (!controls || !controls.classList.contains('ls-entryreel-controls')) {
+      reel.insertAdjacentHTML('afterend', `
+        <div class="ls-entryreel-controls" data-reel-index="${index}">
+          <button type="button" class="ls-entryreel-prev" aria-label="Previous article">‹</button>
+          <div class="ls-entryreel-status">
+            <span class="current">1</span>
+            <span class="sep">/</span>
+            <span class="total">1</span>
+          </div>
+          <button type="button" class="ls-entryreel-next" aria-label="Next article">›</button>
+        </div>
+      `);
+      controls = reel.nextElementSibling;
+    }
+
+    return controls;
+  }
+
+  function updateUI(reel) {
+    if (!reel || !reel.isConnected) return;
+
+    const controls = getControls(reel, 0);
+    const currentEl = controls.querySelector('.current');
+    const totalEl = controls.querySelector('.total');
+    const prevBtn = controls.querySelector('.ls-entryreel-prev');
+    const nextBtn = controls.querySelector('.ls-entryreel-next');
+
+    const swiper = reel.swiper;
+    const totalSlides = reel.querySelectorAll('.ls-entryreel-item').length || 1;
+
+    if (totalEl) totalEl.textContent = totalSlides;
+
+    if (!swiper || typeof swiper.slideNext !== 'function') {
+      if (currentEl) currentEl.textContent = '1';
+      if (prevBtn) prevBtn.disabled = true;
+      if (nextBtn) nextBtn.disabled = totalSlides <= 1;
+      return;
+    }
+
+    const activeIndex =
+      typeof swiper.realIndex !== 'undefined'
+        ? swiper.realIndex
+        : (typeof swiper.activeIndex !== 'undefined' ? swiper.activeIndex : 0);
+
+    if (currentEl) currentEl.textContent = String(activeIndex + 1);
+    if (prevBtn) prevBtn.disabled = !!swiper.isBeginning;
+    if (nextBtn) nextBtn.disabled = !!swiper.isEnd;
+  }
+
+  function hookSwiperEvents(reel) {
+    let tries = 0;
+    const timer = setInterval(function () {
+      tries++;
+
+      if (!reel || !reel.isConnected) {
+        clearInterval(timer);
+        return;
+      }
+
+      const swiper = reel.swiper;
+
+      if (!swiper || typeof swiper.slideNext !== 'function') {
+        if (tries > 80) clearInterval(timer);
+        return;
+      }
+
+      clearInterval(timer);
+
+      if (reel._entryReelHookedSwiper === swiper) {
+        updateUI(reel);
+        return;
+      }
+
+      reel._entryReelHookedSwiper = swiper;
+
+      const refresh = function () {
+        updateUI(reel);
+      };
+
+      swiper.on('slideChange', refresh);
+      swiper.on('transitionEnd', refresh);
+      swiper.on('reachBeginning', refresh);
+      swiper.on('reachEnd', refresh);
+      swiper.on('fromEdge', refresh);
+      swiper.on('update', refresh);
+      swiper.on('resize', refresh);
+
+      updateUI(reel);
+    }, 180);
+  }
+
+  function initEntryReels() {
+    document.querySelectorAll(REEL_SELECTOR).forEach(function (reel, index) {
+      getControls(reel, index);
+      hookSwiperEvents(reel);
+      updateUI(reel);
+    });
+  }
+
+  function queueInit() {
+    [50, 150, 350, 700, 1200].forEach(function (delay) {
+      setTimeout(initEntryReels, delay);
+    });
+  }
+
+  function findReelFromButton(button) {
+    const controls = button.closest(CONTROLS_SELECTOR);
+    if (!controls) return null;
+
+    let reel = controls.previousElementSibling;
+    if (reel && reel.matches(REEL_SELECTOR)) return reel;
+
+    const parent = controls.parentElement;
+    if (!parent) return null;
+
+    return parent.querySelector(REEL_SELECTOR);
+  }
+
+  function stopEvent(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === 'function') {
+      e.stopImmediatePropagation();
+    }
+  }
+
+  // delegated click handler: works even after dynamic page swaps
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('.ls-entryreel-prev, .ls-entryreel-next');
+    if (!btn) return;
+
+    stopEvent(e);
+
+    const reel = findReelFromButton(btn);
+    if (!reel || !reel.swiper || typeof reel.swiper.slideNext !== 'function') return;
+
+    if (btn.classList.contains('ls-entryreel-next')) {
+      reel.swiper.slideNext();
+    } else {
+      reel.swiper.slidePrev();
+    }
+
+    setTimeout(function () {
+      updateUI(reel);
+    }, 60);
+
+    setTimeout(function () {
+      updateUI(reel);
+    }, 350);
+  }, true);
+
+  // stop pointer events from leaking through to post links
+  ['mousedown', 'mouseup', 'touchstart', 'touchend', 'pointerdown', 'pointerup'].forEach(function (evt) {
+    document.addEventListener(evt, function (e) {
+      if (e.target.closest('.ls-entryreel-prev, .ls-entryreel-next')) {
+        stopEvent(e);
+      }
+    }, true);
+  });
+
+  document.addEventListener('DOMContentLoaded', queueInit);
+  window.addEventListener('load', queueInit);
+  window.addEventListener('pageshow', queueInit);
+  window.addEventListener('popstate', queueInit);
+
+  const nativePushState = history.pushState;
+  history.pushState = function () {
+    nativePushState.apply(this, arguments);
+    queueInit();
+  };
+
+  const nativeReplaceState = history.replaceState;
+  history.replaceState = function () {
+    nativeReplaceState.apply(this, arguments);
+    queueInit();
+  };
+
+  const observer = new MutationObserver(function (mutations) {
+    let shouldInit = false;
+
+    mutations.forEach(function (mutation) {
+      mutation.addedNodes.forEach(function (node) {
+        if (node.nodeType !== 1) return;
+
+        if (
+          (node.matches && node.matches(REEL_SELECTOR)) ||
+          (node.querySelector && node.querySelector(REEL_SELECTOR))
+        ) {
+          shouldInit = true;
+        }
+      });
+    });
+
+    if (shouldInit) {
+      queueInit();
+    }
+  });
+
+  function startObserver() {
+    if (!document.body) return;
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  if (document.body) {
+    startObserver();
+  } else {
+    document.addEventListener('DOMContentLoaded', startObserver);
+  }
+})();</script>
+<!-- Google Tag Manager snippet added by Site Kit -->
+<script>
+			( function( w, d, s, l, i ) {
+				w[l] = w[l] || [];
+				w[l].push( {'gtm.start': new Date().getTime(), event: 'gtm.js'} );
+				var f = d.getElementsByTagName( s )[0],
+					j = d.createElement( s ), dl = l != 'dataLayer' ? '&l=' + l : '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore( j, f );
+			} )( window, document, 'script', 'dataLayer', 'GTM-T43HP9KB' );
+			
+</script>
+
+<!-- End Google Tag Manager snippet added by Site Kit -->
+<style id="wp-custom-css">
+.ls-footer-logo {
+    width: 160px !important;
+    height: 47px !important;
+    display: block !important;
+    overflow: visible !important;
+}
+
+.ls-footer-logo > svg {
+    width: 160px !important;
+    height: 47px !important;
+    display: block !important;
+}
+
+/* Keep navbar floating over the hero */
+nav.ls-navbar,
+nav.ls-navbar.-exclusion {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+    z-index: 9999 !important;
+}
+
+/* Prevent header wrappers from creating a white bar */
+header,
+.site-header,
+.ls-header {
+    background: transparent !important;
+}
+
+/* Keep the original layout box small */
+nav.ls-navbar a.ls-navbar-logo {
+    position: absolute !important;
+    top: 18px !important;
+    left: 32px !important;
+
+    width: 160px !important;
+    height: 47px !important;
+
+    display: block !important;
+    overflow: visible !important;
+    line-height: 0 !important;
+}
+
+/* Enlarge visually without affecting navbar height */
+nav.ls-navbar a.ls-navbar-logo > svg,
+nav.ls-navbar a.ls-navbar-logo img {
+    width: 160px !important;
+    height: 47px !important;
+    display: block !important;
+
+    transform: scale(1.85) !important;
+    transform-origin: left top !important;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    nav.ls-navbar a.ls-navbar-logo {
+        top: 14px !important;
+        left: 18px !important;
+        width: 130px !important;
+        height: 39px !important;
+    }
+
+    nav.ls-navbar a.ls-navbar-logo > svg,
+    nav.ls-navbar a.ls-navbar-logo img {
+        width: 130px !important;
+        height: 39px !important;
+        transform: scale(1.2) !important;
+    }
+}
+</style>
+</head>
+
+<body data-rsssl=1 class="error404 wp-theme-livespot elementor-default elementor-kit-2168">
+
+            <div class="ls-loader">
+            <div class="ls-loader-backdrop"></div>
+            <div class="ls-loader-fill"></div>
+            <div class="ls-loader-main">
+                <div class="ls-loader-title -name">Livespot360</div>
+                <div class="ls-loader-title -caption" data-text-change="[&quot;Studios&quot;,&quot;Scenic&quot;,&quot;Spaces&quot;,&quot;Experiences&quot;,&quot;Icons&quot;]">
+                    
+                    Studios                </div>
+                <div class="ls-loader-title -percent">0</div>
+
+                                    <div class="ls-loader-progress">
+                        <div class="ls-loader-images">
+
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-1-14.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-2-9.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-3-5.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-4-5.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-5-3.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-6-1.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-7-1.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-8.jpg" alt>
+                                </div>
+                                                            <div class="ls-loader-image">
+                                    <img src="https://livespot360.com/wp-content/uploads/2023/11/livespot-9.jpg" alt>
+                                </div>
+                                                    </div>
+                    </div>
+                                <div class="ls-loader-caption -copy">2026©</div>
+
+                                    <div class="ls-loader-caption -tagline">// Experience the magic of innovation</div>
+                            </div>
+        </div>
+        <nav class="ls-navbar -exclusion">
+        
+<a class="ls-navbar-logo" href="https://livespot360.com/" aria-label="Home">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        fill="none"
+        viewBox="0 0 160 47"
+        role="img"
+        aria-label="Livespot360"
+    >
+        <image
+            href="https://livespot360.com/wp-content/uploads/2026/06/livespot-livespot-master-transparent-livespot-master-transparent-scaled.png"
+            xlink:href="https://livespot360.com/wp-content/uploads/2026/06/livespot-livespot-master-transparent-livespot-master-transparent-scaled.png"
+            x="0"
+            y="0"
+            width="160"
+            height="47"
+            preserveAspectRatio="xMinYMid meet"
+        />
+    </svg>
+</a>
+
+                    <div class="ls-navbar-navs">
+                <div class="ls-navbar-nav">
+                    <a class="ls-btn ls-btn_link -md" href="https://livespot360.com/connect-with-us-livespot360/">
+                        <span class="ls-btn_link-icon"></span><span class="ls-btn_link-title">Connect</span>
+                    </a>
+                </div>
+            </div>
+                <div class="ls-navbar-toggle">
+            <button class="ls-btn ls-btn_menu" aria-label="Menu" tabindex="0" data-cursor="-menu" data-cursor-stick>
+                <span></span><span></span>
+            </button>
+        </div>
+        <div class="ls-navbar-menu" role="menu" id="navbar-menu">
+            <div class="ls-navbar-menu-backdrop"></div>
+            <div class="ls-navbar-menu-fills" data-cursor-icon="times-o">
+                <div class="ls-navbar-menu-fill"></div>
+                <div class="ls-navbar-menu-fill"></div>
+            </div>
+            <div class="ls-navbar-menu-content">
+                <div class="ls-navbar-menu-container">
+                    <div class="ls-navbar-menu-grid">
+                        <div class="ls-navbar-menu-grid-col -left">
+
+                                                            <div class="ls-navbar-menu-items">
+
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/about-livespot360/">
+                                            <span data-text="About Us">About Us</span>
+                                        </a>
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/services/">
+                                            <span data-text="Our Services">Our Services</span>
+                                        </a>
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/projects/">
+                                            <span data-text="Our portfolio">Our portfolio</span>
+                                        </a>
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/team/">
+                                            <span data-text="Our team">Our team</span>
+                                        </a>
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/blog/">
+                                            <span data-text="Insights">Insights</span>
+                                        </a>
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/careers/">
+                                            <span data-text="Careers">Careers</span>
+                                        </a>
+                                                                            <a class="ls-navbar-menu-item" href="https://livespot360.com/connect-with-us-livespot360/">
+                                            <span data-text="Connect">Connect</span>
+                                        </a>
+                                                                    </div>
+                                                    </div>
+                        <div class="ls-navbar-menu-grid-col -right">
+
+                                                            <div class="ls-navbar-menu-title">
+                                    <h3>Contact Us</h3>
+                                </div>
+                                <div class="ls-navbar-menu-navs">
+                                    <a class="ls-navbar-menu-nav" href="mailto:info@livespot360.com">
+                                        <span class="ls-navbar-menu-nav-title">
+
+                                            
+                                                <span data-text="info">info</span><span data-text="@">@</span><span data-text="livespot">livespot</span><span data-text="360">360</span><span data-text=".">.</span><span data-text="com">com</span>                                                                                    </span>
+                                    </a>
+                                </div>
+                                                        <div class="ls-navbar-menu-extra">
+                                <div class="ls-navbar-menu-separator"></div>
+
+                                                                    <div class="ls-navbar-menu-title">
+                                        <h3>Location</h3>
+                                    </div>
+                                    <div class="ls-navbar-menu-text">
+                                        <address>Plot 5, House 3 Kunle Ogunba Street, Lekki Phase 1, Lagos </address>
+                                    </div>
+                                
+                                                                    <div class="ls-navbar-menu-title">
+                                        <h3>Social</h3>
+                                    </div>
+                                    <div class="ls-navbar-menu-navs">
+
+                                                                                    <a class="ls-navbar-menu-nav" href="https://www.instagram.com/livespot360/" target="_blank" rel="noopener">
+                                                <span class="ls-navbar-menu-nav-title">
+
+                                                    <span data-text="i">i</span><span data-text="n">n</span><span data-text="s">s</span><span data-text="t">t</span><span data-text="a">a</span><span data-text="g">g</span><span data-text="r">r</span><span data-text="a">a</span><span data-text="m">m</span>                                                </span>
+                                            </a>
+                                                                                    <a class="ls-navbar-menu-nav" href="https://www.twitter.com/Livespot360" target="_blank" rel="noopener">
+                                                <span class="ls-navbar-menu-nav-title">
+
+                                                    <span data-text="T">T</span><span data-text="w">w</span><span data-text="i">i</span><span data-text="t">t</span><span data-text="t">t</span><span data-text="e">e</span><span data-text="r">r</span><span data-text=" "> </span><span data-text="/">/</span><span data-text=" "> </span><span data-text="x">x</span>                                                </span>
+                                            </a>
+                                                                                    <a class="ls-navbar-menu-nav" href="https://linkedin.com/company/livespot360" target="_blank" rel="noopener">
+                                                <span class="ls-navbar-menu-nav-title">
+
+                                                    <span data-text="l">l</span><span data-text="i">i</span><span data-text="n">n</span><span data-text="k">k</span><span data-text="e">e</span><span data-text="d">d</span><span data-text="i">i</span><span data-text="n">n</span>                                                </span>
+                                            </a>
+                                                                                    <a class="ls-navbar-menu-nav" href="https://www.youtube.com/Livespot360" target="_blank" rel="noopener">
+                                                <span class="ls-navbar-menu-nav-title">
+
+                                                    <span data-text="y">y</span><span data-text="o">o</span><span data-text="u">u</span><span data-text="t">t</span><span data-text="u">u</span><span data-text="b">b</span><span data-text="e">e</span>                                                </span>
+                                            </a>
+                                                                                    <a class="ls-navbar-menu-nav" href="https://www.tiktok.com/@livespot360" target="_blank" rel="noopener">
+                                                <span class="ls-navbar-menu-nav-title">
+
+                                                    <span data-text="t">t</span><span data-text="i">i</span><span data-text="k">k</span><span data-text="t">t</span><span data-text="o">o</span><span data-text="k">k</span>                                                </span>
+                                            </a>
+                                                                            </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main id="view-main">
+<section class="ls-splash">
+    <div class="ls-splash-bg">
+        <div class="ls-fallbox">
+            <div class="ls-fallbox-item"><img src="/assets/bagel/1.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/2.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/3.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/4.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/5.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/1.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/2.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/3.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/4.webp" alt></div>
+            <div class="ls-fallbox-item"><img src="/assets/bagel/5.webp" alt></div>
+        </div>
+    </div>
+    <div class="ls-splash-content">
+        <div class="ls-splash-body">
+            <div class="ls-splash-reel">
+                <div class="ls-splash-reel-items">
+                    <div class="ls-splash-reel-item">
+                        <div class="ls-splash-header">
+                            <h1>// 404</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ls-splash-action">
+                <a class="ls-btn ls-btn_disc -tertiary -magnetic" href="https://livespot360.com">
+                    <span class="ls-btn_disc-title">Take me home</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+                    </main> 
+    <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/livespot/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+			<script>
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+					<!-- Google Tag Manager (noscript) snippet added by Site Kit -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T43HP9KB" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) snippet added by Site Kit -->
+		<script id="theme-script-js" defer src="https://livespot360.com/assets/js/bundle.js"></script>
+<script id="recaptcha-script-js" src="https://www.google.com/recaptcha/api.js?render=6Le8DtMpAAAAAAgj5KDs6N8tMEOtkw7g-cJ6mxp2"></script>
+<script data-cfasync="false">
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+      var logout_link = document.querySelectorAll('a[href*="wp-login.php?action=logout"]');
+      if (logout_link) {
+        for(var i=0; i < logout_link.length; i++) {
+          logout_link[i].addEventListener( "click", function() {
+            Intercom('shutdown');
+          });
+        }
+      }
+    }
+  };
+</script>
+<script data-cfasync="false">
+  window.intercomSettings = {"app_id":"","installation_type":"wordpress","installation_version":"3.0.2"};
+</script>
+<script data-cfasync="false">(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s, x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script></body>
+</html>
+<!--
+Performance optimized by W3 Total Cache. Learn more: https://www.boldgrid.com/w3-total-cache/?utm_source=w3tc&utm_medium=footer_comment&utm_campaign=free_plugin
+
+Page Caching using Disk (Page is 404) 
+Database Caching using Disk
+
+Served from: livespot360.com @ 2026-08-21 08:56:13 by W3 Total Cache
+-->

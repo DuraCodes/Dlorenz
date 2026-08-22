@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <title>Error 403 - Wazobia FM</title>
+
+    <style type="text/css">
+
+        body {
+            background-color: ;
+            margin: 0;
+            font-family: Helmet, Freesans, sans-serif;
+            color: ;
+        }
+
+        a { color: ; }
+
+        .gm-error-container {
+            padding: 15px;
+        }
+
+        @media only screen and (min-width:450px) {
+
+            .gm-error-container {
+                padding: 0;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -200px;
+                margin-top: -150px;
+                width: 400px;
+                height: 300px;
+            }
+
+        }
+
+        .gm-error-logo {
+            text-align: center;
+            margin: 0;
+        }
+
+        .gm-error-logo img {
+            max-width: 320px;
+            border: 0;
+        }
+
+        h1 { font-size: 24px; }
+
+    </style>
+
+</head>
+<body>
+
+<div class="gm-error-container">
+
+    <p class="gm-error-logo">
+        <a href="/" rel="nofollow">
+            <img src="https://mmo.aiircdn.com/370/6073137567cd6.png" alt="Wazobia FM Logo" />
+        </a>
+    </p>
+
+    <h1>Sorry, we can't show you that.</h1><p>You don't have permission to see this file or folder.<br />Try our home page link below.<br />(Error 403)</p>
+
+    <p>
+        <a href="/" rel="nofollow">
+            Visit the website homepage
+        </a>
+    </p>
+
+</div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VXYLENZVT5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VXYLENZVT5');
+</script>
+
+</body>
+</html>
