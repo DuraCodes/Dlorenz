@@ -1,5 +1,6 @@
 /**
- * ImageKit CDN & Cloud Media Client (Universal - works in both Full-Stack and Netlify Static SPA mode)
+ * ImageKit CDN & Cloud Media Client
+ * Routes requests securely through serverless / backend gateway to prevent browser CORS "Failed to fetch" errors.
  */
 
 export interface ImageKitConfig {
@@ -48,45 +49,72 @@ export function isImageKitConfigured(): boolean {
   return Boolean(config && config.publicKey && config.urlEndpoint);
 }
 
+function getRequestHeaders(config?: ImageKitConfig | null): Record<string, string> {
+  const cfg = config || getStoredImageKitConfig();
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+  if (cfg?.publicKey) {
+    headers['x-ik-public-key'] = cfg.publicKey;
+    headers['x-imagekit-public-key'] = cfg.publicKey;
+  }
+  if (cfg?.privateKey) {
+    headers['x-ik-private-key'] = cfg.privateKey;
+    headers['x-imagekit-private-key'] = cfg.privateKey;
+  }
+  if (cfg?.urlEndpoint) {
+    headers['x-ik-url-endpoint'] = cfg.urlEndpoint;
+    headers['x-imagekit-url-endpoint'] = cfg.urlEndpoint;
+  }
+  return headers;
+}
+
 /**
- * Test credentials against ImageKit direct REST API
+ * Test credentials against ImageKit Gateway
  */
-export async function testImageKitConnection(config: ImageKitConfig): Promise<{ success: boolean; message?: string; error?: string }> {
+export async function testImageKitConnection(
+  config: ImageKitConfig
+): Promise<{ success: boolean; message?: string; error?: string }> {
   try {
-    const { privateKey, urlEndpoint } = config;
-    if (!privateKey) {
-      return { success: false, error: 'Private Key is required to test API connection.' };
+    const { publicKey, privateKey, urlEndpoint } = config;
+    if (!privateKey || !publicKey || !urlEndpoint) {
+      return { success: false, error: 'Please provide Public Key, Private Key, and URL Endpoint.' };
     }
 
-    const authHeader = 'Basic ' + btoa(`${privateKey.trim()}:`);
-    const res = await fetch('https://api.imagekit.io/v1/files?limit=1', {
-      headers: {
-        Authorization: authHeader,
-      },
+    const res = await fetch('/api/imagekit/test-connection', {
+      method: 'POST',
+      headers: getRequestHeaders(config),
+      body: JSON.stringify({
+        publicKey: publicKey.trim(),
+        privateKey: privateKey.trim(),
+        urlEndpoint: urlEndpoint.trim(),
+      }),
     });
 
-    if (res.ok) {
+    const contentType = res.headers.get('content-type');
+    let data: any = {};
+    if (contentType && contentType.includes('application/json')) {
+      data = await res.json();
+    } else {
+      const text = await res.text();
+      return { success: false, error: `Invalid server response: ${text.slice(0, 100)}` };
+    }
+
+    if (res.ok && data.success) {
       return {
         success: true,
-        message: 'Successfully connected and verified with ImageKit API!',
+        message: data.message || 'Successfully connected and verified with ImageKit API!',
       };
     }
 
-    const text = await res.text();
-    let errorMsg = 'ImageKit credentials rejected. Check your Private Key.';
-    try {
-      const data = JSON.parse(text);
-      if (data.message) errorMsg = data.message;
-    } catch {}
-
-    return { success: false, error: errorMsg };
+    return { success: false, error: data.error || 'Verification failed with provided credentials.' };
   } catch (err: any) {
-    return { success: false, error: err.message || 'Network error connecting to ImageKit API' };
+    return { success: false, error: err.message || 'Network error connecting to ImageKit server gateway' };
   }
 }
 
 /**
- * Upload file directly to ImageKit CDN
+ * Upload file to ImageKit CDN via Gateway
  */
 export async function uploadToImageKit(
   fileData: string | File,
@@ -96,36 +124,38 @@ export async function uploadToImageKit(
 ): Promise<{ success: boolean; url?: string; fileId?: string; error?: string }> {
   try {
     const config = configOverride || getStoredImageKitConfig();
-    if (!config || !config.privateKey) {
-      return { success: false, error: 'ImageKit private key not configured. Please save your credentials first.' };
-    }
 
-    const formData = new FormData();
-    formData.append('fileName', fileName);
-    formData.append('folder', folder.startsWith('/') ? folder : `/${folder}`);
-    formData.append('useUniqueFileName', 'true');
-
+    let base64String = '';
     if (typeof fileData === 'string') {
-      formData.append('file', fileData);
+      base64String = fileData;
     } else {
-      formData.append('file', fileData);
+      base64String = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(fileData);
+      });
     }
 
-    const authHeader = 'Basic ' + btoa(`${config.privateKey.trim()}:`);
-    const res = await fetch('https://upload.imagekit.io/api/v1/files/upload', {
+    const res = await fetch('/api/imagekit/upload', {
       method: 'POST',
-      headers: {
-        Authorization: authHeader,
-      },
-      body: formData,
+      headers: getRequestHeaders(config),
+      body: JSON.stringify({
+        file: base64String,
+        fileName: fileName.replace(/[^a-zA-Z0-9._-]/g, '_'),
+        folder: folder.startsWith('/') ? folder : `/${folder}`,
+        publicKey: config?.publicKey,
+        privateKey: config?.privateKey,
+        urlEndpoint: config?.urlEndpoint,
+      }),
     });
 
-    const text = await res.text();
+    const contentType = res.headers.get('content-type');
     let data: any = {};
-    try {
-      data = JSON.parse(text);
-    } catch {
-      return { success: false, error: `Invalid response from ImageKit: ${text.slice(0, 100)}` };
+    if (contentType && contentType.includes('application/json')) {
+      data = await res.json();
+    } else {
+      return { success: false, error: 'Server did not return a valid JSON response.' };
     }
 
     if (res.ok && data.url) {
@@ -136,14 +166,14 @@ export async function uploadToImageKit(
       };
     }
 
-    return { success: false, error: data.message || 'ImageKit upload failed' };
+    return { success: false, error: data.error || data.message || 'ImageKit upload failed' };
   } catch (err: any) {
     return { success: false, error: err.message || 'Error uploading to ImageKit' };
   }
 }
 
 /**
- * Fetch files list directly from ImageKit REST API
+ * Fetch files list from ImageKit via Gateway
  */
 export async function listImageKitFiles(
   folder: string = '/dlorenz/media',
@@ -151,53 +181,36 @@ export async function listImageKitFiles(
 ): Promise<{ success: boolean; files: ImageKitFileItem[]; error?: string }> {
   try {
     const config = configOverride || getStoredImageKitConfig();
-    if (!config || !config.privateKey) {
-      return { success: false, files: [], error: 'ImageKit not configured' };
-    }
-
-    const authHeader = 'Basic ' + btoa(`${config.privateKey.trim()}:`);
     const cleanPath = folder.startsWith('/') ? folder : `/${folder}`;
-    const url = `https://api.imagekit.io/v1/files?path=${encodeURIComponent(cleanPath)}&limit=40`;
+    const url = `/api/imagekit/files?path=${encodeURIComponent(cleanPath)}&limit=40`;
 
     const res = await fetch(url, {
-      headers: {
-        Authorization: authHeader,
-      },
+      headers: getRequestHeaders(config),
     });
 
-    const text = await res.text();
-    let data: any;
-    try {
-      data = JSON.parse(text);
-    } catch {
-      return { success: false, files: [], error: 'Could not parse response from ImageKit' };
+    const contentType = res.headers.get('content-type');
+    let data: any = {};
+    if (contentType && contentType.includes('application/json')) {
+      data = await res.json();
+    } else {
+      return { success: false, files: [], error: 'Could not load files.' };
     }
 
-    if (res.ok && Array.isArray(data)) {
+    if (res.ok && data.files && Array.isArray(data.files)) {
       return {
         success: true,
-        files: data.map((f: any) => ({
-          fileId: f.fileId,
-          name: f.name,
-          url: f.url,
-          thumbnail: f.thumbnail || f.url,
-          fileType: f.fileType,
-          size: f.size,
-          height: f.height,
-          width: f.width,
-          createdAt: f.createdAt,
-        })),
+        files: data.files,
       };
     }
 
-    return { success: false, files: [], error: data.message || 'Failed to list files' };
+    return { success: false, files: [], error: data.error || 'Failed to list files' };
   } catch (err: any) {
     return { success: false, files: [], error: err.message };
   }
 }
 
 /**
- * Delete a file directly from ImageKit
+ * Delete a file from ImageKit via Gateway
  */
 export async function deleteImageKitFile(
   fileId: string,
@@ -205,29 +218,22 @@ export async function deleteImageKitFile(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     const config = configOverride || getStoredImageKitConfig();
-    if (!config || !config.privateKey) {
-      return { success: false, error: 'ImageKit not configured' };
-    }
-
-    const authHeader = 'Basic ' + btoa(`${config.privateKey.trim()}:`);
-    const res = await fetch(`https://api.imagekit.io/v1/files/${fileId}`, {
+    const res = await fetch(`/api/imagekit/delete/${fileId}`, {
       method: 'DELETE',
-      headers: {
-        Authorization: authHeader,
-      },
+      headers: getRequestHeaders(config),
     });
 
-    if (res.status === 204 || res.ok) {
+    const contentType = res.headers.get('content-type');
+    let data: any = {};
+    if (contentType && contentType.includes('application/json')) {
+      data = await res.json();
+    }
+
+    if (res.ok || res.status === 204) {
       return { success: true };
     }
 
-    const text = await res.text();
-    let data: any = {};
-    try {
-      data = JSON.parse(text);
-    } catch {}
-
-    return { success: false, error: data.message || 'Failed to delete file' };
+    return { success: false, error: data.error || 'Failed to delete file' };
   } catch (err: any) {
     return { success: false, error: err.message };
   }
